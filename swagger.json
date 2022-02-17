@@ -1,0 +1,209 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Test User APIs docs",
+        "version": "1.0.0",
+        "title": "Test user APIS",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Test user",
+            "email": "valendabagire@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:9000/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "User",
+            "description": "Users"
+        }
+    ],
+    "paths": {
+        "/user/new": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "new User",
+                "description": "new User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "properties": {
+                            "userName": {
+                                "type": "string",
+                                "example": "john"
+                            },
+                            "givenName": {
+                                "type": "string",
+                                "example": "deo"
+                            },
+                            "surName": {
+                                "type": "string",
+                                "example": "smith"
+                            },
+                            "DOB": {
+                                "type": "string",
+                                "example": "01/01/2022"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Worker added successfully."
+                    }
+                }
+            }
+        },
+        "/user/": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "All users",
+                "description": "Get all users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All users were found."
+                    }
+                }
+            }
+        },
+        "/user/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete single User.",
+                "description": "Delete single User.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User deleted successfully"
+                    }
+                }
+            }
+        },
+        "/user/edit/": {
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Edit single User.",
+                "description": "Edit single User.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "properties": {
+                            "id" :{
+                                "type" : "string",
+                                "example" : "620e7d318e8871d5df949db7"
+                            },
+                            "userName": {
+                                "type": "string",
+                                "example": "john"
+                            },
+                            "givenName": {
+                                "type": "string",
+                                "example": "deo"
+                            },
+                            "surName": {
+                                "type": "string",
+                                "example": "smith"
+                            },
+                            "DOB": {
+                                "type": "string",
+                                "example": "01/01/2022"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User updated successfully"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Getting single User.",
+                "description": "Getting single User.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Single User."
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

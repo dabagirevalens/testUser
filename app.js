@@ -13,6 +13,10 @@ app.use(express.json({ urlExtended: true }))
 
 dbConnect()
 
+const { swaggerJsdoc, swaggerUi } = require('./swagger')
+const swaggerJson = require("./swagger.json");
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson, { explorer: true }))
+
 app.use('', routers)
 
 
