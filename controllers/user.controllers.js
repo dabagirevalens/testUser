@@ -6,16 +6,16 @@ exports.newUser = async (req, res) => {
         const { userName, givenName, surName, DOB } = req.body
 
         const user = await User.create({
-            userName : userName,
-            givenName : givenName,
-            surName : surName,
-            DOB : DOB
+            userName: userName,
+            givenName: givenName,
+            surName: surName,
+            DOB: DOB
         })
 
-        if(!user){
+        if (!user) {
             return res.status(400).json({
-                success : false,
-                message : 'something went wrong'
+                success: false,
+                message: 'something went wrong'
             })
         }
 
@@ -67,7 +67,7 @@ exports.updateUser = async (req, res) => {
 
         const { userName, givenName, surName, DOB } = req.body
 
-        const user = await User.findByIdAndUpdate(req.body.id, {
+        const user = await User.findByIdAndUpdate(req.params.id, {
             userName,
             givenName,
             surName,
@@ -100,20 +100,20 @@ exports.updateUser = async (req, res) => {
 
 }
 
-exports.allUsers = async(req, res) =>{
+exports.allUsers = async (req, res) => {
     try {
-        
+
         const users = await User.find({})
 
-        if(!users){
+        if (!users) {
             return res.status(400).json({
-                success : false,
-                message : 'no users found'
+                success: false,
+                message: 'no users found'
             })
         }
 
         return res.status(200).json({
-            success : true,
+            success: true,
             users
         })
 
@@ -127,7 +127,7 @@ exports.allUsers = async(req, res) =>{
 }
 
 
-exports.deleteUser = async(req, res) =>{
+exports.deleteUser = async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id)
 
@@ -140,7 +140,7 @@ exports.deleteUser = async(req, res) =>{
 
         return res.status(200).json({
             success: true,
-            message : 'user deleted successfully'
+            message: 'user deleted successfully'
         })
 
     } catch (error) {
